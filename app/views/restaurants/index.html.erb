@@ -1,0 +1,20 @@
+<% @restaurants.each do |restaurant| %>
+<h2><%= restaurant.name %></h2>
+<p><%= restaurant.address %></p>
+<p><%= restaurant.phone_number %></p>
+<p><%= restaurant.category %></p>
+    <% unless restaurant.reviews.size == 0 %>
+    <ul>
+    <li><%= restaurant.reviews.last.content %></li>
+    <li><%= restaurant.reviews.last.rating %></li>
+    </ul>
+  <% end %>
+<%= link_to "Détails", restaurant_path(restaurant) %>
+<%= link_to "Modifier", edit_restaurant_path(restaurant) %>
+<%= link_to "Ajouter un commentaire", new_restaurant_review_path(restaurant) %>
+
+<%= link_to "Supprimer", restaurant_path(restaurant), method: :delete, data: {confirm: "Etes vous certain?"} %>
+<% end %>
+<br>
+
+<%= link_to "Ajouter un restaurant", new_restaurant_path %>
