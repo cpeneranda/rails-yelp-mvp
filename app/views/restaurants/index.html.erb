@@ -1,20 +1,44 @@
-<% @restaurants.each do |restaurant| %>
-<h2><%= restaurant.name %></h2>
-<p><%= restaurant.address %></p>
-<p><%= restaurant.phone_number %></p>
-<p><%= restaurant.category %></p>
-    <% unless restaurant.reviews.size == 0 %>
-    <ul>
-    <li><%= restaurant.reviews.last.content %></li>
-    <li><%= restaurant.reviews.last.rating %></li>
-    </ul>
-  <% end %>
-<%= link_to "Détails", restaurant_path(restaurant) %>
-<%= link_to "Modifier", edit_restaurant_path(restaurant) %>
-<%= link_to "Ajouter un commentaire", new_restaurant_review_path(restaurant) %>
+<div class="container">
+  <h1 class="text-center">Our Restaurants</h1>
+  <div class="row">
+    <% @restaurants.each do |restaurant| %>
 
-<%= link_to "Supprimer", restaurant_path(restaurant), method: :delete, data: {confirm: "Etes vous certain?"} %>
-<% end %>
-<br>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('restaurant.jpg') %>');">
+        <div class="card-description">
+          <h2><%= restaurant.name %></h2>
+          <p><%= restaurant.address %></p>
+        </div>
+        <% restaurant.stars.times do  %>
+          <i class="fa fa-star"></i>
+        <% end %>
+        <%= link_to "", restaurant_path(restaurant), class: "card-link" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
 
-<%= link_to "Ajouter un restaurant", new_restaurant_path %>
+
+
+<!-- Wrap all page content here -->
+<div id="wrap">
+  <div class="container">
+
+    <h1>Bootstrap starter template with sticky footer</h1>
+    <p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
+
+  </div> <!-- /container -->
+</div> <!-- /wrap -->
+
+<div id="footer">
+      <div class="container">
+        <p class="muted credit">This is a sticky footer</p>
+      </div>
+</div>
+</div>
+
+
+
+
+
+

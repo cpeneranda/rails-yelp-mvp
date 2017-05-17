@@ -1,3 +1,6 @@
-<%= render 'form' %>
+<h1>Editing Restaurant</h1>
 
-<%= link_to "Annuler", restaurants_path %>
+<%= render 'form', restaurant: @restaurant %>
+
+<%= link_to 'Show', @restaurant %> |
+<%= link_to 'Back', restaurants_path %>
